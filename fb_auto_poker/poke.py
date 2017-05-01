@@ -2,6 +2,10 @@
 #-*- coding: utf-8 -*-
 import cookielib, urllib, urllib2, httplib, time
 #import ssl
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 class poke():
     def __init__(self):
@@ -18,12 +22,9 @@ class poke():
                 self.login()
                 
                 while 1:
-                    print "그만두려면 키보드인터럽트 발생시키세요"
-                    print "새 콕찌르기 시작"
                     self.poke()
             except:
-                print "어디선가 에러가 발생했습니다"
-                print "아마 연결이 제대로 안된걸지도"
+                print "Error!"
                 print ""
                 
         
@@ -45,8 +46,6 @@ class poke():
         del(poke_list[-1])
 
         if len(poke_list) == 0:
-            print "콕 찌를 상대가 없습니다!"
-            print ""
             time.sleep(1)
             return 0
 
@@ -78,10 +77,8 @@ class poke():
         for i in range(0, len(self.name_list)):
             req = urllib2.Request(self.url_main+self.url_list[i])
             op = urllib2.urlopen(req)
-            print(str(i) + " : " + self.name_list[i] + " 님을 찔렀습니다")
+            print(unicode(self.name_list[i].replace("</s","") + " 님을 찔렀습니다"))
             time.sleep(0.001)
-        print "콕 찌르기 끝!"
-        print ""
         time.sleep(2)
         
         
