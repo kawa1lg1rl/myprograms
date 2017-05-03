@@ -92,7 +92,8 @@ class poke():
         for i in range(0, len(self.name_list)):
             req = urllib2.Request(self.url_main+self.url_list[i])
             op = urllib2.urlopen(req)
-            print(unicode(self.name_list[i].replace("</s","") + "님(%s)을 찔렀습니다."%poke_count[i]))
+            tm = time.gmtime() 
+            print(unicode(self.name_list[i].replace("</s","") + "님(%s)을 찔렀습니다. ( %s )"%(poke_count[i],str((tm.tm_hour + 9) % 12) + " : " + str((tm.tm_min)) + " : " + str(tm.tm_sec))))
             time.sleep(0.001)
         time.sleep(1)
         
