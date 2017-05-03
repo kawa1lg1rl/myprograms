@@ -94,7 +94,7 @@ class poke():
             op = urllib2.urlopen(req)
             print(unicode(self.name_list[i].replace("</s","") + "님(%s)을 찔렀습니다."%poke_count[i]))
             time.sleep(0.001)
-        time.sleep(0.5)
+        time.sleep(1)
         
         
 
